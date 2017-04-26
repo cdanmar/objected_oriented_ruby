@@ -56,9 +56,7 @@
 # item2 = Items.new("green", 30, 23, 232)
 
 class Items
-  attr_reader :color, :price, :number_in_stock, :units_sold
-  attr_writer :color, :price, :number_in_stock, :units_sold
-
+  attr_accessor :color, :price, :number_in_stock, :units_sold
   def initialize(input)
     @color = input[:color]
     @price = input[:price]
@@ -72,8 +70,19 @@ class Items
 
 end
 
+class Food < Items
+  attr_accessor :shelf_life
+  def initialize(input)
+    super()
+    @shelf_life = input[:shelf_life]
+  end
+end
+
 item1 = Items.new(color: "blue", price: 10, number_in_stock: 50, units_sold: 300)
 items2 = Items.new(color: "green", price: 30, number_in_stock: 23, units_sold: 232)
 
-puts item1.print_info
+food1 = Food.new(color: "yellow", price: 1, number_in_stock: 60, units_sold: 32, shelf_life: 3)
+
+puts item1.shelf_life
+
 
